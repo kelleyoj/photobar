@@ -1,0 +1,33 @@
+.bg {
+  /* Sizing */
+  width: 100vw;
+  height: 100vh;
+
+  /* Text styles */
+  color: white;
+
+  /* Background styles */
+  background-image: url(https://images.unsplash.com/photo-1500491219697-f7612955d0ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.search-bar {
+  padding-top: 25%;
+}
+
+/* .has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+} */

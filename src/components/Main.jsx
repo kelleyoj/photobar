@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
 import HeroSearch from "./pages/HeroSearch";
 import Gallery from "./pages/Gallery";
 import axios from "axios";
+import "./stylesheets/Main.css";
 
 class Main extends Component {
   state = {
     searchText: "",
-    amount: 15,
+    amount: 150,
     apiUrl: "https://pixabay.com/api",
     apiKey: "11755932-20b04c3e8dde43204d753b81d",
     images: [],
@@ -17,8 +18,13 @@ class Main extends Component {
 
   handleTextChange = e => {
     const val = e.target.value;
-    this.setState({ searchText: val });
+    this.setState({ [e.target.name]: val });
   };
+
+  handleText = text => {
+    this.setState({ searchText: text });
+  };
+
   isEmpty = () => {
     if (this.state.searchText === "") {
       return true;
@@ -37,10 +43,13 @@ class Main extends Component {
     }
   };
 
-  isVisible = () => {
-    this.setState({ showGallery: false });
+  isVisible = boolean => {
+    this.setState({ showGallery: boolean });
   };
 
+  updateImage = img => {
+    this.setState({ images: img });
+  };
   handleSubmit = e => {
     e.preventDefault();
     if (!this.isEmpty()) this.setState({ showGallery: true });
@@ -59,7 +68,6 @@ class Main extends Component {
         )
         .then(res => this.setState({ images: res.data.hits }))
         .catch(err => console.log(err));
-      console.log(this.state.images);
     }
   };
 
@@ -70,42 +78,48 @@ class Main extends Component {
           handleSubmit={this.handleSubmit}
           handleClick={this.handleClick}
           handleTextChange={this.handleTextChange}
+          handleText={this.handleText}
           isVisible={this.isVisible}
           state={this.state}
+          updateImage={this.updateImage}
         />
       );
     } else {
       return (
         <div className="container-fluid">
-          <Gallery images={this.state.images} />
+          <Gallery state={this.state} images={this.state.images} />
         </div>
       );
     }
+  };
+
+  test = () => {
+    console.log("cat");
   };
 
   render() {
     return (
       <div>
         <nav className="navbar sticky-top navbar-light bg-light">
-          <a className="navbar-brand">Navbar</a>
-          <form className="form-inline" onSubmit={this.handleSubmit}>
+          <span style={{}} className="navbar-brand">
+            PhotoBar
+          </span>
+          <span
+            className="home-icon mr-auto"
+            onClick={() => this.isVisible(false)}
+          >
+            <FaHome />
+          </span>
+          <form id="demo-2" onSubmit={this.handleSubmit}>
             <input
+              name="searchText"
               style={{ borderColor: this.state.border }}
-              className="form-control mr-sm-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
               value={this.state.searchText}
               onChange={this.handleTextChange}
             />
-
-            <button
-              className="btn btn-success"
-              type="submit"
-              onClick={this.handleClick}
-            >
-              Search
-            </button>
           </form>
         </nav>
         {this.handleSwitchView()}

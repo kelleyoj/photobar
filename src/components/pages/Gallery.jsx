@@ -1,82 +1,77 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { FaHeart } from "react-icons/fa";
-import { GridList, GridTile } from "material-ui/GridList";
-import IconButton from "material-ui/IconButton";
-import ZoomIn from "material-ui/svg-icons/action/zoom-in";
-import Dialog from "material-ui/Dialog";
-import FlatButton from "material-ui/FlatButton";
-import { Divider } from "material-ui";
+import { FaHeart, FaSearchPlus } from "react-icons/fa";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+
+// import Modal from "../modal";
+
+import "../stylesheets/Gallery.css";
 
 class Gallery extends Component {
   state = {
-    open: false,
+    modal: false,
     currentImg: ""
   };
 
   handleOpen = img => {
-    this.setState({ open: true, currentImg: img });
+    this.setState({ modal: true, currentImg: img });
+    console.log("open");
   };
-
   handleClose = () => {
-    this.setState({ open: false });
+    this.setState({ modal: false });
   };
-
   render() {
-    let imageListContent;
     const { images } = this.props;
-
-    if (images) {
-      imageListContent = (
-        <GridList cols={3}>
-          {images.map(img => (
-            <GridTile
-              title={
-                <div>
-                  <FaHeart style={{ color: "red" }} />
-                  &nbsp;{img.likes}
-                </div>
-              }
-              key={img.id}
-              subtitle={
-                <span>
-                  by <strong>{img.user}</strong>
-                </span>
-              }
-              actionIcon={
-                <IconButton onClick={() => this.handleOpen(img.largeImageURL)}>
-                  <ZoomIn color="white" />
-                </IconButton>
-              }
-            >
-              <img
-                onClick={() => this.handleOpen(img.largeImageURL)}
-                src={img.largeImageURL}
-                alt=""
-              />
-            </GridTile>
-          ))}
-        </GridList>
-      );
-    } else {
-      imageListContent = null;
-    }
-
-    const actions = [
-      <FlatButton label="Close" primary={true} onClick={this.handleClose} />
-    ];
 
     return (
       <div>
-        {imageListContent}
-        <Dialog
-          actions={actions}
-          modal={false}
-          open={this.state.open}
-          onRequestClose={this.handleClose}
+        <h3>{this.props.state.searchText} Photos</h3>
+        <h6>{this.props.state.images.length} photos</h6>
+        <div className="container">
+          <div className="row">
+            {images.map(img => (
+              <div key={img.id} className="  top col-sm-12 col-lg-4">
+                <div className="wrapper">
+                  <img className="gallery-img" src={img.largeImageURL} alt="" />
+                  <div className="overlay">
+                    <div className="container">
+                      <div className="row">
+                        <div className="col-4">
+                          <FaHeart style={{ color: "red" }} />
+                          &nbsp;{img.likes}
+                        </div>
+                        <div className="col-6">{img.user}</div>
+                        <div className="col-2">
+                          <span
+                            type="text"
+                            onClick={() => this.handleOpen(img.largeImageURL)}
+                          >
+                            <FaSearchPlus />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <Modal
+          isOpen={this.state.modal}
+          className={this.props.className}
+          centered={true}
         >
-          <img src={this.state.currentImg} alt="" style={{ width: "100%" }} />
-        </Dialog>
+          <ModalHeader toggle={this.toggle}>cat</ModalHeader>
+          <ModalBody>
+            <img src={this.state.currentImg} alt="" />
+          </ModalBody>
+          <ModalFooter>
+            <Button color="secondary" onClick={this.handleClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </Modal>
       </div>
     );
   }

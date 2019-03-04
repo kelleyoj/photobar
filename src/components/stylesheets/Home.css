@@ -16,12 +16,13 @@
   padding-top: 25%;
 }
 
-/* .has-search .form-control {
+.has-search .form-control {
   padding-left: 2.375rem;
 }
 
 .has-search .form-control-feedback {
   position: absolute;
+  padding-top: 0.5%;
   z-index: 2;
   display: block;
   width: 2.375rem;
@@ -30,4 +31,19 @@
   text-align: center;
   pointer-events: none;
   color: #aaa;
-} */
+}
+.has-search:focus {
+  outline-color: brown;
+}
+.has-search input {
+  height: 3em;
+}
+
+.has-search input:focus {
+  box-shadow: none;
+  -webkit-box-shadow: -1px 0px 5px 5px rgba(0, 0, 0, 0.38);
+  -moz-box-shadow: -1px 0px 5px 5px rgba(0, 0, 0, 0.38);
+  box-shadow: -1px 0px 5px 5px rgba(0, 0, 0, 0.38);
+
+  /* border: 5px solid rgba(0, 0, 0, 0.3); */
+}

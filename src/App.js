@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Main from "./components/Main";
 import "./App.css";
-import Footer from "./components/Footer";
 
 class App extends Component {
   render() {

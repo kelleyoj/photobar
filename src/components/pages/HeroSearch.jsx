@@ -6,7 +6,7 @@ import "../stylesheets/HeroSearch.css";
 class Home extends Component {
   state = {
     searchText: "",
-    amount: 150,
+    amount: 200,
     apiUrl: "https://pixabay.com/api",
     apiKey: "11755932-20b04c3e8dde43204d753b81d",
     images: [],

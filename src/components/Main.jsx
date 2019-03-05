@@ -100,7 +100,7 @@ class Main extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar sticky-top navbar-light bg-light">
+        <nav className="navbar fixed-top navbar-light bg-light">
           <span style={{}} className="navbar-brand">
             PhotoBar
           </span>

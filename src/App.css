@@ -1,3 +1,65 @@
-body {
-  font-family: "Srisakdi", cursive;
+.app {
+  overflow: hidden;
+}
+
+@media screen and (min-width: 300px) {
+  .search-bar {
+    padding-top: 50%;
+  }
+  .search-bar h5 {
+    margin-bottom: 1em;
+  }
+  .gallery {
+    margin-top: 22%;
+  }
+  .gallery h6 {
+    padding-left: 1%;
+  }
+}
+@media screen and (min-width: 600px) {
+  .bg .container {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  .search-bar {
+    padding-top: 40%;
+  }
+  .search-bar h2 {
+    font-size: 3.5em;
+  }
+  .gallery {
+    margin-top: 12%;
+  }
+  .gallery h6 {
+    width: 15%;
+    padding-left: 1%;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .bg .container {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  .search-bar {
+    padding-top: 40%;
+  }
+  .search-bar h2 {
+    font-size: 3.5em;
+  }
+  .gallery {
+    margin-top: 7%;
+  }
+  .gallery h6 {
+    padding-left: 3%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .search-bar {
+    padding-top: 16%;
+  }
+  .search-bar h2 {
+    font-size: 3.5em;
+  }
+}
+@media screen and (min-width: 1400px) {
 }

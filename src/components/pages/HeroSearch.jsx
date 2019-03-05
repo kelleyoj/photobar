@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
-import "../stylesheets/Home.css";
+import "../stylesheets/HeroSearch.css";
 
 class Home extends Component {
   state = {
@@ -61,6 +61,7 @@ class Home extends Component {
     if (!this.isEmpty()) {
       this.props.handleText(this.state.searchText);
     }
+
     if (this.state.isLoading) {
       this.props.isVisible(true);
     }

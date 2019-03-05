@@ -1,3 +1,19 @@
+.gallery {
+  margin-top: 7%;
+}
+.gallery h6 {
+  border: cyan 2px solid;
+  border-radius: 2em;
+  width: 12%;
+  padding-left: 2%;
+}
+.gallery h3 {
+  text-transform: capitalize;
+}
+.wrapper .search-icon {
+  padding-left: 30%;
+}
+
 .top {
   padding-top: 15px;
   padding-bottom: 15px;

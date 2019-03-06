@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { FaHeart, FaSearchPlus } from "react-icons/fa";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "../stylesheets/Gallery.css";
+import Footer from "../Footer";
 
 class Gallery extends Component {
   state = {
@@ -83,6 +84,7 @@ class Gallery extends Component {
             </Button>
           </ModalFooter>
         </Modal>
+        <Footer />
       </div>
     );
   }
